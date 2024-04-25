@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/base.astro';
+import SubmitCode from '../components/submit.jsx';
+
+const pageTitle = "PyPost";
+const header = "PyPost";
+---
+
+<Base pageTitle = {pageTitle} header = {header}>
+	<div class="form-content">
+		<SubmitCode client:load />
+	</div>
+</Base>

@@ -1,0 +1,54 @@
+html { width: 100%; }
+
+:root{
+    font-weight: 500;
+    font-size: larger;
+    font-family: 'Monospace';
+    text-rendering: optimizeLegibility;
+
+    --pc: rgb(27, 27, 27);
+    --sc: rgb(70, 70, 70);
+    --tc: whitesmoke;
+}
+
+body{
+    background-color: var(--pc);
+    color: var(--tc);
+}
+
+.form-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    display: block;
+    background-color: var(--sc);
+    color: var(--tc);
+    margin: 0 0 1rem 0;
+    height: 20px;
+}
+
+textarea{
+    display: block;
+    background-color: var(--sc);
+    color: var(--tc);
+    margin: 1rem 0;
+    width: 400px;
+    height: 300px;
+}
+
+.submit-btn{
+    background-color: var(--sc);
+    color: var(--tc);
+    width: 100px;
+    height: auto;
+    margin: 0;
+}
+
+.submit-btn:hover{
+    cursor: pointer;
+    background-color: var(--tc);
+    color: var(--pc);
+}

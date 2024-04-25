@@ -1,0 +1,23 @@
+---
+import "../styles/global.css"
+import Base from '../layouts/base.astro';
+
+const pageTitle = "Success";
+const header = "PyPost";
+---
+
+<Base pageTitle = {pageTitle} header = {header}>
+	<div>
+        <h2>Success</h2>
+        <p>You can close this application now.</p>
+	</div>
+</Base>
+
+<style>
+    h2{
+        color: rgb(40, 146, 40);
+    }
+    div{
+        text-align: center;
+    }
+</style>
