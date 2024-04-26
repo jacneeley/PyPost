@@ -18,4 +18,7 @@ def update(user_submission):
 def displayAll():
     return user_code
 
+def deleteById(id):
+    del user_code[id]
+
 print(displayAll())
