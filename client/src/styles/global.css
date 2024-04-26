@@ -80,7 +80,7 @@ textarea{
     margin-left:2.2rem;
 }
 
-.submissions button{
+.submissions .x{
     float: right;
     border: none;
     margin-right: 2rem;
@@ -89,7 +89,7 @@ textarea{
     color: var(--tc);
 }
 
-.submissions button:hover{
+.submissions .x:hover{
     cursor: pointer;
     background-color: var(--sc);
     border-radius: 25px;
@@ -105,4 +105,20 @@ textarea{
 
 .text-center{
     text-align: center;
+}
+
+.copy{
+    font-size: medium;
+    border: none;
+    float: right;
+    margin-right: 2.2rem;
+    margin-top: -1rem;
+    background-color: transparent;
+    color: var(--tc);
+}
+
+.copy:hover{
+    cursor: pointer;
+    background-color: var(--pc);
+    border-radius: 25px;
 }

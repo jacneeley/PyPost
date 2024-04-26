@@ -6,6 +6,7 @@ export default function CodeStack(){
     const url = import.meta.env.PUBLIC_API_KEY
     const [code, setCode] = useState([]); //code sent in by user
     const [serverError, setServerError] = useState(false);
+    const [text, setText] = useState("");
 
     function fetchData(url){
         axios.get(url)
@@ -13,9 +14,6 @@ export default function CodeStack(){
             if(response.status == 200){
                 console.log(response);
                 setCode(response.data);
-            }
-            else{
-                console.log("Error")
             }
         })
         .catch(err => {
@@ -26,7 +24,7 @@ export default function CodeStack(){
         });
     }
 
-    function postDelete(id, url){
+    const handleDelete=(id)=>{
         axios.post(`${url}/del/${id}`)
         .then(response => {
             setCode(response.data);
@@ -39,25 +37,27 @@ export default function CodeStack(){
         });
     }
 
-    const handleDelete=(id)=>{
-        postDelete(id, `${url}`);
+    const handleCopy = async (code) =>{
+        setText(code);
+        await navigator.clipboard.writeText(text);
     }
 
     function DisplayData(){
         return(
             <>
-            {code.map((userCode, key) => {
-                return(
-                    <div className='submissions' key={key}>
-                        <button onClick={()=> handleDelete(key)}>x</button>
-                        <p>User: {userCode.username}</p>
-                        <textarea 
-                        value={userCode.code}
-                        readOnly />
-                    </div>
-                );
-            })
-            }
+                {code.map((userCode, key) => {
+                    return(
+                            <div className='submissions' key={key}>
+                                <button className="x" onClick={()=> handleDelete(key)}>x</button>
+                                <p>User: {userCode.username}</p>
+                                <textarea 
+                                value={userCode.code}
+                                readOnly />
+                                <button className="copy" onClick={()=>handleCopy(userCode.code)}>copy</button>
+                            </div>
+                        );
+                    })
+                }
             </>
         );
     }
