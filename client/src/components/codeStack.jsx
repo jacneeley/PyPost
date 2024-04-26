@@ -4,21 +4,26 @@ import axios from 'axios'
 export default function CodeStack(){
 
     const url = import.meta.env.PUBLIC_API_KEY
-    //code sent in by user
-    const [code, setCode] = useState([]);
+    const [code, setCode] = useState([]); //code sent in by user
+    const [serverError, setServerError] = useState(false);
 
     function fetchData(url){
         axios.get(url)
         .then(response => {
             if(response.status == 200){
-                console.log(response)
+                console.log(response);
                 setCode(response.data);
             }
             else{
                 console.log("Error")
             }
         })
-        .catch(err => console.error("ERROR: " + err))
+        .catch(err => {
+            console.error("ERROR: " + err)
+            if(err){
+                setServerError(true);
+            }
+        });
     }
 
     function postDelete(id, url){
@@ -26,12 +31,16 @@ export default function CodeStack(){
         .then(response => {
             setCode(response.data);
         })
-        .catch(err => console.error("ERROR: " + err));
+        .catch(err => {
+            console.error("ERROR: " + err)
+            if(err){
+                setServerError(true);
+            }
+        });
     }
 
     const handleDelete=(id)=>{
-        console.log(id);
-        postDelete(id, `${url}`)
+        postDelete(id, `${url}`);
     }
 
     function DisplayData(){
@@ -59,7 +68,9 @@ export default function CodeStack(){
 
     return(
         <>
-            { code.length === 0 ? <p className="text-center">Loading...</p> : <DisplayData /> }
+            { serverError ? (<p className="text-center">Internal Server Error...</p>) :
+                (!code.length ? <p className="text-center">Loading...</p> : <DisplayData />)
+            }
         </>
     );
 }

@@ -55,13 +55,25 @@ textarea{
 
 /*submissions*/
 
+@keyFrames fadeAnimation{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 .submissions{
     margin: 3rem auto;
     padding: .5rem;
-    border: 2px solid whitesmoke;
+    background-image: linear-gradient(var(--pc), var(--sc));
+    border: 2px solid var(--sc);
     border-radius: 25px;
     width: 500px;
     height: auto;
+    opacity: 1;
+    animation: fadeAnimation ease .2s;
 }
 
 .submissions p{
@@ -73,7 +85,7 @@ textarea{
     border: none;
     margin-right: 2rem;
     font-size: large;
-    background-color: var(--pc);
+    background-color: transparent;
     color: var(--tc);
 }
 
@@ -87,6 +99,8 @@ textarea{
     margin: 1rem auto;
     width: 400px;
     height: auto;
+    background-color: var(--pc);
+    color: forestgreen;
 }
 
 .text-center{

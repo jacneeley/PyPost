@@ -7,10 +7,14 @@ function updateBackend(url, obj){
         data: obj
     })
     .then(response => {
-        console.log(response)
+        if(response.status === 200){
+            return window.location.replace("/success");
+        }
     })
-    .catch(error => console.error("ERROR: "+ error));
-    //return window.location.replace("/success");
+    .catch(error => {
+        console.error("ERROR: "+ error)
+        alert("FAILED: INTERNAL SERVER ERROR")
+    });
 }
 
 export default updateBackend
