@@ -12,7 +12,7 @@ export default function CodeStack(){
         .then(response => {
             if(response.status == 200){
                 console.log(response)
-                setCode(response.data)
+                setCode(response.data);
             }
             else{
                 console.log("Error")
@@ -21,12 +21,26 @@ export default function CodeStack(){
         .catch(err => console.error("ERROR: " + err))
     }
 
+    function postDelete(id, url){
+        axios.post(`${url}/del/${id}`)
+        .then(response => {
+            setCode(response.data);
+        })
+        .catch(err => console.error("ERROR: " + err));
+    }
+
+    const handleDelete=(id)=>{
+        console.log(id);
+        postDelete(id, `${url}`)
+    }
+
     function DisplayData(){
         return(
             <>
             {code.map((userCode, key) => {
                 return(
                     <div className='submissions' key={key}>
+                        <button onClick={()=> handleDelete(key)}>x</button>
                         <p>User: {userCode.username}</p>
                         <textarea 
                         value={userCode.code}
@@ -40,13 +54,12 @@ export default function CodeStack(){
     }
 
     useEffect(() => {
-        //console.log(fetchData(url));
         fetchData(url);
     },[]);
 
     return(
         <>
-            <DisplayData />
+            { code.length === 0 ? <p className="text-center">Loading...</p> : <DisplayData /> }
         </>
     );
 }

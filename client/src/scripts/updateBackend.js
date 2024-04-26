@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 function updateBackend(url, obj){
-    console.log(obj);
     axios({
         method: "post",
         url:url,

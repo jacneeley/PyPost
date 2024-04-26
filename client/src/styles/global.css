@@ -52,3 +52,43 @@ textarea{
     background-color: var(--tc);
     color: var(--pc);
 }
+
+/*submissions*/
+
+.submissions{
+    margin: 3rem auto;
+    padding: .5rem;
+    border: 2px solid whitesmoke;
+    border-radius: 25px;
+    width: 500px;
+    height: auto;
+}
+
+.submissions p{
+    margin-left:2.2rem;
+}
+
+.submissions button{
+    float: right;
+    border: none;
+    margin-right: 2rem;
+    font-size: large;
+    background-color: var(--pc);
+    color: var(--tc);
+}
+
+.submissions button:hover{
+    cursor: pointer;
+    background-color: var(--sc);
+    border-radius: 25px;
+}
+
+.submissions textarea{
+    margin: 1rem auto;
+    width: 400px;
+    height: auto;
+}
+
+.text-center{
+    text-align: center;
+}
