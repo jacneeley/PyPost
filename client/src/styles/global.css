@@ -22,6 +22,17 @@ body{
     align-items: center;
 }
 
+.main-header{
+    outline: none;
+    text-decoration: none;
+    font-size: inherit;
+    color:inherit;
+}
+
+.main-header:hover{
+    cursor: pointer;
+}
+
 input{
     display: block;
     background-color: var(--sc);
@@ -76,6 +87,12 @@ textarea{
     animation: fadeAnimation ease .2s;
 }
 
+.submissions:hover{
+    cursor: pointer;
+    border-color: var(--tc);
+    padding: .5rem;
+}
+
 .submissions p{
     margin-left:2.2rem;
 }
@@ -83,7 +100,7 @@ textarea{
 .submissions .x{
     float: right;
     border: none;
-    margin-right: 2rem;
+    margin-right: 2.4rem;
     font-size: large;
     background-color: transparent;
     color: var(--tc);
@@ -98,9 +115,40 @@ textarea{
 .submissions textarea{
     margin: 1rem auto;
     width: 400px;
-    height: auto;
     background-color: var(--pc);
     color: forestgreen;
+    resize: none;
+    overflow: hidden;
+}
+
+.sub {
+    margin-bottom: -1rem; 
+}
+
+.sub p{
+    display: inline;
+    font-size: small;
+    margin-left:2.4rem;
+}
+
+.sub span{
+    float: right;
+    margin-right: 2.4rem;
+}
+
+.sub span:hover{
+    cursor: pointer;
+    background-color: var(--sc);
+    border-radius: 25px;
+}
+
+.accordion-content textarea{
+    height: 500px;
+    overflow: visible;
+}
+
+.hide textarea{
+    height: auto
 }
 
 .text-center{

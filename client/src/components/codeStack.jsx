@@ -42,22 +42,38 @@ export default function CodeStack(){
         await navigator.clipboard.writeText(text);
     }
 
+    function AccordionData({ userCode, index }){
+        const [active, setActive] = useState(false);
+
+        return (
+            <div className="submissions">
+                <button className="x" onClick={()=> handleDelete(index)}>x</button>
+                <div className='contents' onClick={()=> setActive(!active)}>
+                    <div className="accordion">
+                        <p>User: {userCode.username}</p>
+                        <div className={active ? "accordion-content" : "hide"}>
+                            <div className="sub">
+                                <p>code</p>
+                                <span>{active ? "-" : "+"}</span>
+                            </div>
+                            <textarea
+                            id="dynamicTxt" 
+                            value={userCode.code}
+                            readOnly></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button className="copy" onClick={()=>handleCopy(userCode.code)}>copy</button>
+            </div>
+        );
+    }
+
     function DisplayData(){
         return(
             <>
-                {code.map((userCode, key) => {
-                    return(
-                            <div className='submissions' key={key}>
-                                <button className="x" onClick={()=> handleDelete(key)}>x</button>
-                                <p>User: {userCode.username}</p>
-                                <textarea 
-                                value={userCode.code}
-                                readOnly />
-                                <button className="copy" onClick={()=>handleCopy(userCode.code)}>copy</button>
-                            </div>
-                        );
-                    })
-                }
+                {code.map((userCode, index) => (
+                    <AccordionData userCode={userCode} index={index} key={index} />
+                ))}
             </>
         );
     }
