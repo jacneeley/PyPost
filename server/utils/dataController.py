@@ -2,7 +2,7 @@ import json
 user_code = []
 
 #add or update
-def update(user_submission):
+def update(user_submission: dict) -> list:
     if user_code:
         for i in user_code:
             if user_submission['username'] == i['username']:
@@ -15,10 +15,11 @@ def update(user_submission):
         return user_code.append(user_submission)
     
 
-def displayAll():
+def displayAll() -> list:
     return user_code
 
-def deleteById(id):
+def deleteById(id: int) -> None:
     del user_code[id]
 
-print(displayAll())
+if __name__ == "__main__":
+    print(displayAll())
