@@ -1,5 +1,5 @@
 import json
-user_code = []
+user_code: list = []
 
 #add or update
 def update(user_submission: dict) -> list:
